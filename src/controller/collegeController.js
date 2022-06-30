@@ -51,14 +51,14 @@ const createCollege = async function (req, res) {
         }
         
         let found = false
-        await axios.get(data.logoLink)
-            .then((r) => {
-                if (r.status == 200 || r.status == 201) {
-                    if (r.headers["content-type"].startsWith("image/"))
+        await axios.get(logoLink)
+            .then((res) => {
+                if (res.status == 200 || r.status == 201) {
+                    if (res.headers["content-type"].startsWith("image/"))
                         found = true;
                 }
             })
-            .catch((error) => { found = false })
+            .catch((error) => { found=false})
 
         if (found == false) return res.status(400).send({ status: false, message: "Provide correct Logo Link" });
 
