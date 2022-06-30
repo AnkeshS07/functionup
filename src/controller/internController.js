@@ -8,16 +8,14 @@ const emailRegex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/
 //const mobileRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/
 const mobileRegex = /^[6-9]\d{9}$/
 
+// ---------------------------- Validation -------------------------------------
 
-
-//
-const isValidObjectId = function (objectId) { return mongoose.Types.ObjectId.isValid(objectId) }
+// const isValidObjectId = function (objectId) { return mongoose.Types.ObjectId.isValid(objectId) }
 const objectValue = function (value) {
     if (typeof value === "undefined" || value === null ) return false    //|| typeof value === Number
     if (typeof value === "string" && value.trim().length === 0) return false
     return true
 }
-
 
 // -------------------------- CREATE Intern -----------------------------
 
@@ -51,15 +49,13 @@ const createIntern = async function (req, res) {
         if (!internData.mobile) {
             return res.status(400).send({ status: false, msg: "Please Provide Mobile No" })
         }
-        if (!mobileRegex.test(internData.mobile)) {     //Error 
+        if (!mobileRegex.test(internData.mobile)) {      
             return res.status(400).send({ status: false, msg: "Please Provide valid Mobile No" })
         }
         let duplicateMobile = await internModel.findOne({ mobile: internData.mobile });
         if (duplicateMobile) {
             return res.status(400).send({ status: false, msg: `${internData.mobile} already exists!` });
         }
-
-
         if (!internData.collegeName) {
             return res.status(400).send({ status: false, msg: "Please Provide college name" })
 
@@ -68,7 +64,7 @@ const createIntern = async function (req, res) {
         if (!collegeData) {
             return res.status(400).send({ status: false, msg: "college data not found" })
         }
-        const collegeId = collegeData._id // 
+        const collegeId = collegeData._id 
         const dataOfIntern = { name, email, mobile, collegeId } // restructuring of internData
         let savedData = await internModel.create(dataOfIntern)
         return res.status(201).send({
