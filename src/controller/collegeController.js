@@ -108,7 +108,7 @@ const getCollegeDetails = async function (req, res) {
                 logoLink: allData.logoLink,
                 interns: interns
             }
-        })
+    })
 
     }
     catch (err) {
