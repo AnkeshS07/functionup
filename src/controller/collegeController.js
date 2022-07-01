@@ -24,7 +24,6 @@ const createCollege = async function (req, res) {
 
         if (Object.keys(req.query).length == 0) {
 
-
             const data = req.body
             data.name = data.name.trim()
 
@@ -50,7 +49,7 @@ const createCollege = async function (req, res) {
             }
 
             let found = false
-            await axios.get(data.logoLink)
+           await axios.get(data.logoLink)
                 .then((res) => {
                     if (res.status == 200 || res.status == 201) {
                         if (res.headers["content-type"].startsWith("image/"))

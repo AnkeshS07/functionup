@@ -13,12 +13,12 @@ const nameRegex = /^[ a-z ]+$/i
 
 // ---------------------------- Validation -------------------------------------
 
-const objectValue = function (value) {
-    if (typeof value === undefined || value === null) return false    //|| typeof value === Number
-    if (typeof value === "string" && value.trim().length === 0) return false
-    if (typeof value === Number) return false
-    return true
-}
+// const objectValue = function (value) {
+//     if (typeof value === undefined || value === null) return false    //|| typeof value === Number
+//     if (typeof value === "string" && value.trim().length === 0) return false
+//     if (typeof value === Number) return false
+//     return true
+// }
 
 // -------------------------- CREATE Intern -----------------------------
 
