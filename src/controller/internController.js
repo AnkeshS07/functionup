@@ -1,12 +1,10 @@
 const internModel = require("../models/internModel")
-const mongoose = require('mongoose')
 const collegeModel = require("../models/collegeModel")
 
 // --------------------------- Regex for email and mobile ---------------------
 
 const emailRegex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/
 const mobileRegex = /^[6-9]\d{9}$/
-// const nameRegex = /^[a-zA-Z]{1,20}$/
 const nameRegex = /^[ a-z ]+$/i
 
 // ---------------------------- Validation -------------------------------------
